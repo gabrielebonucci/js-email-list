@@ -32,6 +32,8 @@ Promise.all(requests)
 
         const li = document.createElement('li');
 
+        li.className = 'list-group-item';
+
         li.textContent = email;
 
         list.appendChild(li);
