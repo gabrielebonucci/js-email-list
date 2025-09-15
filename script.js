@@ -1,6 +1,8 @@
 // selezioni gli elementi
 const list = document.getElementById('email-list');
 const loader = document.getElementById('loading-message');
+const generateBtn = document.getElementById('generate-btn');
+
 
 // contenitore vuoto per le chiamate
 const requests = [];
