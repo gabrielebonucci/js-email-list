@@ -3,7 +3,10 @@ const list = document.getElementById('email-list');
 const loader = document.getElementById('loading-message');
 const generateBtn = document.getElementById('generate-btn');
 
-
+function fetchAndViewEmails() {
+    loader.style.display = 'block';
+    list.innerHTML = '';
+    
 // contenitore vuoto per le chiamate
 const requests = [];
 
@@ -19,8 +22,10 @@ for (let i = 0; i < 10; i++) {
 
 Promise.all(requests)
     // .then() si attiva solo quando tutte le 10 promesse hanno avuto successo.
-
 .then(responses => {
+    // Appena le risposte arrivano, nascondo il messaggio di caricamento
+    loader.style.display = 'none';
+
     for (let i = 0; i < responses.length; i++) {
         
         const email = responses[i].data.response;
@@ -40,3 +45,8 @@ console.error("Siè verificato un errore", error);
 list.innerHTML = '<li>Errore nel caricamento delle email!</li>';
 
 });
+
+}
+
+generateBtn.addEventListener('click', fetchAndViewEmails);
+fetchAndViewEmails();
